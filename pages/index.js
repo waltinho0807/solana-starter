@@ -1,13 +1,21 @@
 import React, { useEffect, useState, useMemo } from 'react';
+import Image from 'next/image';
 
 
 import { Keypair, Transaction } from "@solana/web3.js";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { InfinitySpin } from "react-loader-spinner";
+import Table from '../components/Table';
+
+import palmeiras from "../public/i.png"
+import botafogo from "../public/botafogo.jpeg"
 
 const App = () => {
   
   const [walletAddress, setWalletAdress] = useState(null)
+  const [inputDataOne, setInputDataOne] = useState(0);
+  const [inputDataTwo, setInputDataTwo] = useState(0);       
+  
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -110,6 +118,7 @@ const App = () => {
           console.log(`Transação enviada: https://solscan.io/tx/${txHash}?cluster=devnet`);
           // Mesmo que isso possa falhar, por ora, vamos apenas torná-lo realidade
           setPaid(true);
+          createTicket()
         } catch (error) {
           console.error(error);
           console.log(order)
@@ -118,14 +127,27 @@ const App = () => {
         }
       };
 
+      async function createTicket () {
+    
+        const response = await fetch("../api/data", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({inputDataOne, inputDataTwo}),
+        })
+    
+        console.log(response.ok)
+       }
+    
+
       
 
       if (loading) {
         return <InfinitySpin color="gray" />;
       }
 
-     
-  
+      
 
   return (
     
@@ -174,15 +196,249 @@ const App = () => {
       </header>
 
       <main>
-      <div className='mt-10'>
+      
+        
+        <div className='mt-10'>
           {paid ? (
             <h1>Item comprado</h1>
           ) : (
-            <button disabled={loading} className="buy-button" onClick={processTransaction}>
+            <button disabled={loading} className="btn btn-primary" onClick={processTransaction}>
               Compre agora 
             </button>
           )}
+
+          
         </div>
+        <div className="overflow-x-auto">
+      <form action="" method="post">
+  <table className="table">
+    {/* head */}
+    <thead>
+      <tr>
+        <th>Casa</th>
+        <th>Gols casa</th>
+        <th>Gols fora</th>
+        <th>Fora</th>
+      </tr>
+    </thead>
+    <tbody>
+      {/* row 1 */}
+      <tr>
+        <td>
+          <div className="flex items-center gap-3 ml-20">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <Image
+                  src={palmeiras}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Palmeiras</div>
+            </div>
+          </div>
+        </td>
+        <th>
+          <label>
+            <input type="number" className="checkbox-primary w-10" placeholder={0}/>
+          </label>
+        </th>
+        <th>
+          <label>
+            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          </label>
+        </th>
+        
+        <td>
+          <div className="flex items-center gap-3 ml-20">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+              <Image
+                  src={botafogo}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Botafogo - RJ</div>
+              
+            </div>
+          </div>
+        </td>
+      </tr>
+      {/* row 2 */}
+      <tr>
+        <td>
+          <div className="flex items-center gap-3 ml-20">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <Image
+                  src={palmeiras}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Palmeiras</div>
+            </div>
+          </div>
+        </td>
+        <th>
+          <label>
+            <input
+             type="number" className="checkbox-primary w-10" 
+             onChange={(e) => setInputDataOne(e.target.value)}
+             name="inputDataOne"
+             value={inputDataOne} placeholder={0}/>
+          </label>
+        </th>
+        <th>
+          <label>
+            <input 
+             type="number" className="checkbox-primary w-10"
+             value={inputDataTwo} placeholder={0}
+             onChange={(e) => setInputDataTwo(e.target.value)}
+             name="inputDataTwo"/>
+             
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center gap-3 ml-20">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+              <Image
+                  src={botafogo}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Botafogo - RJ</div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      {/* row 3 */}
+      <tr>
+        <td>
+          <div className="flex items-center gap-3 ml-20">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <Image
+                  src={palmeiras}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Palmeiras</div>
+            </div>
+          </div>
+        </td>
+        <th>
+          <label>
+            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          </label>
+        </th>
+        <th>
+          <label>
+            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center gap-3 ml-20">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+              <Image
+                  src={botafogo}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Botafogo - RJ</div>
+              
+            </div>
+          </div>
+        </td>
+      </tr>
+      {/*line 4*/}
+      <tr>
+        <td>
+          <div className="flex items-center gap-3 ml-20">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <Image
+                  src={palmeiras}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Palmeiras</div>
+            </div>
+          </div>
+        </td>
+        <th>
+          <label>
+            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          </label>
+        </th>
+        <th>
+          <label>
+            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center gap-3 ml-20">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+              <Image
+                  src={botafogo}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Botafogo - RJ</div>
+              
+            </div>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+    {/* foot */}
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Job</th>
+        <th>Favorite Color</th>
+        <th></th>
+      </tr>
+    </tfoot>
+  </table>
+  {paid == true ? <button type="submit" >Submit</button> : <button type="submit" onClick={processTransaction}  className=" btn btn-primary">Create ticket</button>}
+  </form>
+</div>
       </main>    
     </div>
   );

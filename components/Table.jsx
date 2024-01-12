@@ -1,140 +1,279 @@
-<div className="overflow-x-auto">
+import Image from "next/image"
+import palmeiras from "../public/i.png"
+import botafogo from "../public/botafogo.jpeg"
+import { useState } from "react"
+
+
+
+
+
+
+export default function Table ({buyer,itemId, orderId}) {
+  const order = {buyer: "dsihfaiofhisadfhsdf8af", orderID: "orderknkdlnvz", itemId: "1"}
+
+  const [paid, setPaid] = useState(null)
+
+  const processTransactionTest = async () => {
+    setLoading(true);
+    const txResponse = await fetch("../api/createTransaction", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(buyer, orderId, itemId),
+    });
+    const txData = await txResponse.json();
+
+    const tx = Transaction.from(Buffer.from(txData.transaction, "base64"));
+    console.log("Tx data is", tx);
+
+    try {
+      // Envie a transação para a rede
+      const txHash = await sendTransaction(tx, connection);
+      console.log(`Transação enviada: https://solscan.io/tx/${txHash}?cluster=devnet`);
+      // Mesmo que isso possa falhar, por ora, vamos apenas torná-lo realidade
+      setPaid(true);
+      createTicket()
+    } catch (error) {
+      console.error(error);
+      console.log(order)
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const [inputDataOne, setInputDataOne] = useState(0);
+  const [inputDataTwo, setInputDataTwo] = useState(0);
+
+   async function createTicket () {
+    
+    const response = await fetch("../api/data", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({inputDataOne, inputDataTwo}),
+    })
+
+    console.log(response.ok)
+   }
+
+  return(
+    <div className="overflow-x-auto">
+      <form action="" method="post">
   <table className="table">
     {/* head */}
     <thead>
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
-        <th></th>
+        <th>Casa</th>
+        <th>Gols casa</th>
+        <th>Gols fora</th>
+        <th>Fora</th>
       </tr>
     </thead>
     <tbody>
       {/* row 1 */}
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
         <td>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 ml-20">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                <Image
+                  src={palmeiras}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
               </div>
             </div>
             <div>
-              <div className="font-bold">Hart Hagerty</div>
-              <div className="text-sm opacity-50">United States</div>
+              <div className="font-bold">Palmeiras</div>
             </div>
           </div>
         </td>
-        <td>
-          Zemlak, Daniel and Leannon
-          <br/>
-          <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-        </td>
-        <td>Purple</td>
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+          <label>
+            <input type="number" className="checkbox-primary w-10" placeholder={0}/>
+          </label>
         </th>
+        <th>
+          <label>
+            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          </label>
+        </th>
+        
+        <td>
+          <div className="flex items-center gap-3 ml-20">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+              <Image
+                  src={botafogo}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Botafogo - RJ</div>
+              
+            </div>
+          </div>
+        </td>
       </tr>
       {/* row 2 */}
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
         <td>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 ml-20">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-3@56w.png" alt="Avatar Tailwind CSS Component" />
+                <Image
+                  src={palmeiras}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
               </div>
             </div>
             <div>
-              <div className="font-bold">Brice Swyre</div>
-              <div className="text-sm opacity-50">China</div>
+              <div className="font-bold">Palmeiras</div>
             </div>
           </div>
         </td>
-        <td>
-          Carroll Group
-          <br/>
-          <span className="badge badge-ghost badge-sm">Tax Accountant</span>
-        </td>
-        <td>Red</td>
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+          <label>
+            <input
+             type="number" className="checkbox-primary w-10" 
+             onChange={(e) => setInputDataOne(e.target.value)}
+             name="inputDataOne"
+             value={inputDataOne} placeholder={0}/>
+          </label>
         </th>
+        <th>
+          <label>
+            <input 
+             type="number" className="checkbox-primary w-10"
+             value={inputDataTwo} placeholder={0}
+             onChange={(e) => setInputDataTwo(e.target.value)}
+             name="inputDataTwo"/>
+             
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center gap-3 ml-20">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+              <Image
+                  src={botafogo}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Botafogo - RJ</div>
+            </div>
+          </div>
+        </td>
       </tr>
       {/* row 3 */}
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
         <td>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 ml-20">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-4@56w.png" alt="Avatar Tailwind CSS Component" />
+                <Image
+                  src={palmeiras}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
               </div>
             </div>
             <div>
-              <div className="font-bold">Marjy Ferencz</div>
-              <div className="text-sm opacity-50">Russia</div>
+              <div className="font-bold">Palmeiras</div>
             </div>
           </div>
         </td>
-        <td>
-          Rowe-Schoen
-          <br/>
-          <span className="badge badge-ghost badge-sm">Office Assistant I</span>
-        </td>
-        <td>Crimson</td>
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+          <label>
+            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          </label>
         </th>
+        <th>
+          <label>
+            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center gap-3 ml-20">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+              <Image
+                  src={botafogo}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Botafogo - RJ</div>
+              
+            </div>
+          </div>
+        </td>
       </tr>
-      {/* row 4 */}
+      {/*line 4*/}
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
         <td>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 ml-20">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-5@56w.png" alt="Avatar Tailwind CSS Component" />
+                <Image
+                  src={palmeiras}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
               </div>
             </div>
             <div>
-              <div className="font-bold">Yancy Tear</div>
-              <div className="text-sm opacity-50">Brazil</div>
+              <div className="font-bold">Palmeiras</div>
             </div>
           </div>
         </td>
-        <td>
-          Wyman-Ledner
-          <br/>
-          <span className="badge badge-ghost badge-sm">Community Outreach Specialist</span>
-        </td>
-        <td>Indigo</td>
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+          <label>
+            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          </label>
         </th>
+        <th>
+          <label>
+            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          </label>
+        </th>
+        <td>
+          <div className="flex items-center gap-3 ml-20">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+              <Image
+                  src={botafogo}
+                  alt="Palmeiras"
+                  width={40}
+                  height={40}
+                  />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">Botafogo - RJ</div>
+              
+            </div>
+          </div>
+        </td>
       </tr>
+
     </tbody>
     {/* foot */}
     <tfoot>
@@ -146,6 +285,9 @@
         <th></th>
       </tr>
     </tfoot>
-    
   </table>
+  {paid == true ? <button type="submit" >Submit</button> : <button type="submit" onClick={processTransactionTest}  className=" btn btn-primary">Create ticket</button>}
+  </form>
 </div>
+  )
+}

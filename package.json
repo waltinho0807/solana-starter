@@ -19,6 +19,8 @@
     "bignumber.js": "^9.1.2",
     "crypto-js": "^4.2.0",
     "daisyui": "^4.5.0",
+    "fs": "^0.0.1-security",
+    "mongoose": "^8.0.4",
     "next": "14.0.4",
     "postcss": "^8.4.33",
     "react": "18.2.0",
