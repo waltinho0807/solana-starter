@@ -1,6 +1,6 @@
 import Image from "next/image"
-import palmeiras from "../public/i.png"
-import botafogo from "../public/botafogo.jpeg"
+import palmeiras from "../public/palmeiras.png"
+import botafogo from "../public/botafogo.png"
 import { useState } from "react"
 
 

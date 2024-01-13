@@ -7,16 +7,44 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { InfinitySpin } from "react-loader-spinner";
 import Table from '../components/Table';
 
-import palmeiras from "../public/i.png"
-import botafogo from "../public/botafogo.jpeg"
+import brasileiro from "../public/logobrasileiro.jpg"
+import palmeiras from "../public/palmeiras.png"
+import flamengo from "../public/flamengo.png"
+import vasco from "../public/vasco-da-gama.png"
+import bahia from "../public/bahia.png"
+import internacional from "../public/internacional.png"
+import corinthians from "../public/corinthians.png"
+import fluminense from "../public/fluminense.png"
+import botafogo from "../public/botafogo.png"
+//import botafogo from "../public/botafogo.png"
+//import botafogo from "../public/botafogo.png"
+//import botafogo from "../public/botafogo.png"
+//import botafogo from "../public/botafogo.png"
+//import botafogo from "../public/botafogo.png"
+//import botafogo from "../public/botafogo.png"
+//import botafogo from "../public/botafogo.png"
+//import botafogo from "../public/botafogo.png"
+//import botafogo from "../public/botafogo.png"
+//import botafogo from "../public/botafogo.png"
+//import botafogo from "../public/botafogo.png"
+
+
+
+
+
 
 const App = () => {
   
   const [walletAddress, setWalletAdress] = useState(null)
   const [inputDataOne, setInputDataOne] = useState(0);
-  const [inputDataTwo, setInputDataTwo] = useState(0);       
+  const [inputDataTwo, setInputDataTwo] = useState(0);   
+  const [inputDataThree, setInputDataThree] = useState(0);
+  const [inputDataFour, setInputDataFour] = useState(0);
+  const [inputDataFive, setInputDataFive] = useState(0);
+  const [inputDataSix, setInputDataSix] = useState(0);
+  const [inputDataSeven, setInputDataSeven] = useState(0);
+  const [inputDataEight, setInputDataEight] = useState(0);    
   
-
   const checkIfWalletIsConnected = async () => {
     try {
       const {solana} = window;
@@ -150,7 +178,7 @@ const App = () => {
       
 
   return (
-    
+    <>
     <div>
       <div className="navbar bg-orange-300">
         <div className="navbar-start">
@@ -159,12 +187,12 @@ const App = () => {
              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </div>
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a>Item 1</a></li>
+              <li><a></a></li>
               <li>
-              <a>Parent</a>
+              <a></a>
               <ul className="p-2">
-                <li><a>Submenu 1</a></li>
-                <li><a>Submenu 2</a></li>
+                <li><a>Premier League</a></li>
+                <li><a>La liga</a></li>
               </ul>
               </li>
               <li><a>Item 3</a></li>
@@ -177,10 +205,11 @@ const App = () => {
             <li><a>Item 1</a></li>
             <li>
             <details>
-              <summary>Parent</summary>
+              <summary>Campeonatos</summary>
               <ul className="p-2">
-                <li><a>Submenu 1</a></li>
-                <li><a>Submenu 2</a></li>
+                <li><a>Brasileiro</a></li>
+                <li><a>Premier League</a></li>
+                <li><a>La liga</a></li>
               </ul>
               </details>
             </li>
@@ -192,33 +221,40 @@ const App = () => {
       </div> 
 
       <header>
-        
+        <div className="hero min-h-screen bg-base-200">
+          <div className="hero-content flex-col lg:flex-row">
+          <Image
+                  src={brasileiro}
+                  alt="Palmeiras"
+                  width={400}
+                  height={800}
+                  className='max-w-sm rounded-lg shadow-2xl'
+                  />
+            
+            <div>
+              <h1 className="text-5xl font-bold">Campeonato Brasileiro</h1>
+              <p className='py-6 text-2xl'><span className='font-bold'>Temporada:</span> 2024</p>
+              <p className='py-6 text-2xl'><span className='font-bold'>Rodada:</span> 1</p>
+              <p className="py-6">Se divirta com a gente!. De seu palpite e fature o prêmio, de seu palpite no placar dos seguintes jogos acertando você ganha uma bolada em USDC</p>
+      
+            </div>
+          </div>
+        </div>
       </header>
 
       <main>
       
-        
-        <div className='mt-10'>
-          {paid ? (
-            <h1>Item comprado</h1>
-          ) : (
-            <button disabled={loading} className="btn btn-primary" onClick={processTransaction}>
-              Compre agora 
-            </button>
-          )}
-
-          
-        </div>
         <div className="overflow-x-auto">
-      <form action="" method="post">
+      
   <table className="table">
     {/* head */}
     <thead>
+      
       <tr>
-        <th>Casa</th>
-        <th>Gols casa</th>
-        <th>Gols fora</th>
-        <th>Fora</th>
+        <th className='text-xl'>Casa</th>
+        <th className='text-xl'>Gols casa</th>
+        <th className='text-xl'>Gols fora</th>
+        <th className='text-xl'> Fora</th>
       </tr>
     </thead>
     <tbody>
@@ -237,18 +273,26 @@ const App = () => {
               </div>
             </div>
             <div>
-              <div className="font-bold">Palmeiras</div>
+              <div className="font-bold text-2xl">Palmeiras</div>
             </div>
           </div>
         </td>
         <th>
           <label>
-            <input type="number" className="checkbox-primary w-10" placeholder={0}/>
+          <input
+             type="number" className="checkbox-primary text-2xl w-12 h-8 rounded" 
+             onChange={(e) => setInputDataOne(e.target.value)}
+             name="inputDataOne"
+             value={inputDataOne} placeholder={0}/>
           </label>
         </th>
         <th>
           <label>
-            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          <input
+             type="number" className="checkbox-primary text-2xl w-12 h-8 rounded" 
+             onChange={(e) => setInputDataTwo(e.target.value)}
+             name="inputDataOne"
+             value={inputDataTwo} placeholder={0}/>
           </label>
         </th>
         
@@ -265,7 +309,7 @@ const App = () => {
               </div>
             </div>
             <div>
-              <div className="font-bold">Botafogo - RJ</div>
+              <div className="font-bold text-2xl">Botafogo - RJ</div>
               
             </div>
           </div>
@@ -278,7 +322,7 @@ const App = () => {
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
                 <Image
-                  src={palmeiras}
+                  src={flamengo}
                   alt="Palmeiras"
                   width={40}
                   height={40}
@@ -286,25 +330,25 @@ const App = () => {
               </div>
             </div>
             <div>
-              <div className="font-bold">Palmeiras</div>
+              <div className="font-bold text-2xl">Flamengo</div>
             </div>
           </div>
         </td>
         <th>
           <label>
             <input
-             type="number" className="checkbox-primary w-10" 
-             onChange={(e) => setInputDataOne(e.target.value)}
+             type="number" className="checkbox-primary text-2xl w-12 h-8 rounded" 
+             onChange={(e) => setInputDataThree(e.target.value)}
              name="inputDataOne"
-             value={inputDataOne} placeholder={0}/>
+             value={inputDataThree} placeholder={0}/>
           </label>
         </th>
         <th>
           <label>
             <input 
-             type="number" className="checkbox-primary w-10"
-             value={inputDataTwo} placeholder={0}
-             onChange={(e) => setInputDataTwo(e.target.value)}
+             type="number" className="checkbox-primary text-2xl w-12 h-8 rounded"
+             value={inputDataFour} placeholder={0}
+             onChange={(e) => setInputDataFour(e.target.value)}
              name="inputDataTwo"/>
              
           </label>
@@ -314,7 +358,7 @@ const App = () => {
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
               <Image
-                  src={botafogo}
+                  src={vasco}
                   alt="Palmeiras"
                   width={40}
                   height={40}
@@ -322,7 +366,7 @@ const App = () => {
               </div>
             </div>
             <div>
-              <div className="font-bold">Botafogo - RJ</div>
+              <div className="font-bold text-2xl">Vasco</div>
             </div>
           </div>
         </td>
@@ -332,9 +376,9 @@ const App = () => {
         <td>
           <div className="flex items-center gap-3 ml-20">
             <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
+              <div className="mask mask-squircle w-12 h-12 ">
                 <Image
-                  src={palmeiras}
+                  src={bahia}
                   alt="Palmeiras"
                   width={40}
                   height={40}
@@ -342,18 +386,26 @@ const App = () => {
               </div>
             </div>
             <div>
-              <div className="font-bold">Palmeiras</div>
+              <div className="font-bold text-2xl">Bahia</div>
             </div>
           </div>
         </td>
         <th>
           <label>
-            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          <input
+             type="number" className="checkbox-primary text-2xl w-12 h-8 rounded" 
+             onChange={(e) => setInputDataFive(e.target.value)}
+             name="inputDataOne"
+             value={inputDataFive} placeholder={0}/>
           </label>
         </th>
         <th>
           <label>
-            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          <input
+             type="number" className="checkbox-primary text-2xl w-12 h-8 rounded" 
+             onChange={(e) => setInputDataSix(e.target.value)}
+             name="inputDataOne"
+             value={inputDataSix} placeholder={0}/>
           </label>
         </th>
         <td>
@@ -361,7 +413,7 @@ const App = () => {
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
               <Image
-                  src={botafogo}
+                  src={internacional}
                   alt="Palmeiras"
                   width={40}
                   height={40}
@@ -369,7 +421,7 @@ const App = () => {
               </div>
             </div>
             <div>
-              <div className="font-bold">Botafogo - RJ</div>
+              <div className="font-bold text-2xl">Internacional</div>
               
             </div>
           </div>
@@ -382,7 +434,7 @@ const App = () => {
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
                 <Image
-                  src={palmeiras}
+                  src={corinthians}
                   alt="Palmeiras"
                   width={40}
                   height={40}
@@ -390,18 +442,26 @@ const App = () => {
               </div>
             </div>
             <div>
-              <div className="font-bold">Palmeiras</div>
+              <div className="font-bold text-2xl">Corinthians</div>
             </div>
           </div>
         </td>
         <th>
           <label>
-            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          <input
+             type="number" className="checkbox-primary text-2xl w-12 h-8 rounded" 
+             onChange={(e) => setInputDataSeven(e.target.value)}
+             name="inputDataOne"
+             value={inputDataSeven} placeholder={0}/>
           </label>
         </th>
         <th>
           <label>
-            <input type="number" className="checkbox-primary w-10" placeholder={0} />
+          <input
+             type="number" className="checkbox-primary text-2xl w-12 h-8 rounded" 
+             onChange={(e) => setInputDataEight(e.target.value)}
+             name="inputDataOne"
+             value={inputDataEight} placeholder={0}/>
           </label>
         </th>
         <td>
@@ -409,7 +469,7 @@ const App = () => {
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
               <Image
-                  src={botafogo}
+                  src={fluminense}
                   alt="Palmeiras"
                   width={40}
                   height={40}
@@ -417,7 +477,7 @@ const App = () => {
               </div>
             </div>
             <div>
-              <div className="font-bold">Botafogo - RJ</div>
+              <div className="font-bold text-2xl">Fluminense</div>
               
             </div>
           </div>
@@ -425,22 +485,46 @@ const App = () => {
       </tr>
 
     </tbody>
-    {/* foot */}
-    <tfoot>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
-        <th></th>
-      </tr>
-    </tfoot>
   </table>
-  {paid == true ? <button type="submit" >Submit</button> : <button type="submit" onClick={processTransaction}  className=" btn btn-primary">Create ticket</button>}
-  </form>
+  <div className='px-4 py-5 flex flex-col items-center'>
+    <button type="submit" onClick={processTransaction}  className=" btn btn-primary mb-10 mt-5 ml-5 w-80 h-15">Create ticket</button>
+  </div>
+   
+  
 </div>
-      </main>    
+      </main> 
+      <div className="flex gap-5">
+        <h3 className='font-bold text-2xl ml-20 mb-5'>Final da rodada em:</h3>
+  <div>
+    <span className="countdown font-mono text-4xl">
+        <span style={{"--value":15}}></span>
+    </span>
+    days
+  </div> 
+  <div>
+    <span className="countdown font-mono text-4xl">
+        <span style={{"--value":10}}></span>
+    </span>
+    hours
+  </div> 
+  <div>
+    <span className="countdown font-mono text-4xl">
+      <span style={{"--value":24}}></span>
+    </span>
+    min
+  </div> 
+  <div>
+    <span className="countdown font-mono text-4xl">
+      <span style={{"--value":6}}></span>
+    </span>
+    sec
+  </div>
+  <h3 className='font-bold text-2xl ml-20 mb-5'>Prêmio acumulado em:<span> 500.00 USDC</span></h3>
+</div>
+      
     </div>
+    
+    </>
   );
 };
 

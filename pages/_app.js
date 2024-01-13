@@ -15,6 +15,7 @@ import {
 import { clusterApiUrl } from "@solana/web3.js";
 
 import "@solana/wallet-adapter-react-ui/styles.css";
+import Footer from '../components/footer';
 
 function MyApp({ Component, pageProps }) {
   const network = WalletAdapterNetwork.Devnet;
@@ -35,6 +36,7 @@ function MyApp({ Component, pageProps }) {
       <WalletProvider wallets={[new PhantomWalletAdapter()]} autoConnect>
         <WalletModalProvider>
           <Component {...pageProps} />
+          <Footer/>  
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>

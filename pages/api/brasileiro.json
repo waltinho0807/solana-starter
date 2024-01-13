@@ -1,0 +1,85 @@
+[
+    {
+        "brasileiro" : {
+            "nome": "Brasileiro",
+            "escudo": "../public/brasileiro.png",
+            "temporada": "2024"
+        },
+        "palmeiras" : {
+            "nome": "Palmeiras",
+            "escudo": "../public/i.png"
+        },
+        "corinthians" : {
+            "nome": "Corinthians",
+            "escudo": "../public/corinthians.png"
+        },
+        "saopaulo" : {
+            "nome": "São Paulo",
+            "escudo": "../public/saopaulo.png"
+        },
+        "redbull" : {
+            "nome": "RB Bragantino",
+            "escudo": "../public/redbulbragantino.png"
+        },
+        "flamengo" : {
+            "nome": "Flamengo",
+            "escudo": "../public/flamengo.png"
+        },
+        "botafogo" : {
+            "nome": "Botafogo",
+            "escudo": "../public/botafogo.jpeg"
+        },
+        "fluminense" : {
+            "nome": "Fluminense",
+            "escudo": "../public/fluminense.png"
+        },
+        "vasco" : {
+            "nome": "Vasco",
+            "escudo": "../public/vasco.png"
+        },
+        "internacional" : {
+            "nome": "Internacional",
+            "escudo": "../public/internacional.png"
+        },
+        "gremio" : {
+            "nome": "Gremio",
+            "escudo": "../public/gremio.png"
+        },
+        "bahia" : {
+            "nome": "Bahia",
+            "escudo": "../public/bahia.png"
+        },
+        "juventude" : {
+            "nome": "Juventude",
+            "escudo": "../public/juventude.png"
+        },
+        "criciuma" : {
+            "nome": "Criciúma",
+            "escudo": "../public/criciuma.png"
+        },
+        "atlgo" : {
+            "nome": "Atl - GO",
+            "escudo": "../public/atlgo.png"
+        },
+        "cruzeiro" : {
+            "nome": "Cruzeiro",
+            "escudo": "../public/cruzeiro.png"
+        },
+        "atlmg" : {
+            "nome": "Atl - MG",
+            "escudo": "../public/atlmg.png"
+        },
+        "fortaleza" : {
+            "nome": "Fortaleza",
+            "escudo": "../public/fortaleza.png"
+        },
+        "vitoria" : {
+            "nome": "Vitoria",
+            "escudo": "../public/vitoria.png"
+        },
+        "Atlpr" : {
+            "nome": "Atl - PR",
+            "escudo": "../public/atlpr.png"
+        }
+    }
+]
